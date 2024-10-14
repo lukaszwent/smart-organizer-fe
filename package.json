@@ -2,10 +2,22 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "apps/web-app"
+    "apps/*",
+    "backend/*",
+    "shared/*"
   ],
-  "dependencies": {},
   "devDependencies": {
+    "concurrently": "^9.0.1",
     "lerna": "^8.1.8"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "clean": "lerna clean",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "start": "lerna run start",
+    "start:server": "./scripts/start-stubs.sh",
+    "start:web": "./scripts/start-web.sh",
+    "start:all": "concurrently \"npm run start:server\" \"npm run start:web\""
   }
 }
